@@ -27,7 +27,7 @@ public class CustomerServiceTest extends TestCase {
 
     public void testGetCustomerList() throws Exception {
         List<Customer> customerList = customerService.getCustomerList(null);
-        Assert.assertEquals(2, customerList.size());
+        Assert.assertEquals(3, customerList.size());
     }
 
     public void testGetCustomer() throws Exception {
