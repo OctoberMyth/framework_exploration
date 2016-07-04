@@ -2,9 +2,9 @@ package org.smart4j.chapter1.service;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import org.smart4j.chapter1.helper.DatabaseHelper;
 import org.smart4j.chapter1.model.Customer;
 
-import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,12 @@ import java.util.Map;
 /**
  * Created by LY on 2016/5/22.
  */
-public class CustomerServiceTest extends TestCase {
+public class CustomerServiceTest extends TestCase{
+    public void setUp() throws Exception {
+
+        DatabaseHelper.executeSqlFile("sql/customer_init.sql");
+        super.setUp();
+    }
 
     private final CustomerService customerService;
 
@@ -20,10 +25,6 @@ public class CustomerServiceTest extends TestCase {
         this.customerService = new CustomerService();
     }
 
-    public void setUp() throws Exception {
-        super.setUp();
-
-    }
 
     public void testGetCustomerList() throws Exception {
         List<Customer> customerList = customerService.getCustomerList(null);
